@@ -49,3 +49,4 @@ python -m pip check
 
 python -c "import torch; x=torch.ones(4, device='cuda'); print((x+x).cpu()); torch.cuda.synchronize()"
 
+yolo predict model=yolo11n.pt source=0 device=0 imgsz=640 show=True
