@@ -1,0 +1,24 @@
+python3 <<'PY'
+import cv2
+
+cap = cv2.VideoCapture("/dev/video0", cv2.CAP_V4L2)
+if not cap.isOpened():
+    raise SystemExit("カメラを開けません。デバイス番号を確認してください。")
+
+cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
+cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
+
+try:
+    while True:
+        ok, frame = cap.read()
+        if not ok:
+            print("映像を取得できませんでした。")
+            break
+
+        cv2.imshow("USB Camera - Q to quit", frame)
+        if cv2.waitKey(1) & 0xFF == ord("q"):
+            break
+finally:
+    cap.release()
+    cv2.destroyAllWindows()
+PY
