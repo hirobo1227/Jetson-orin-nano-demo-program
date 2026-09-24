@@ -22,3 +22,18 @@ finally:
     cap.release()
     cv2.destroyAllWindows()
 PY
+
+
+sudo apt install python3-venv python3-pip
+python3 -m venv --system-site-packages ~/yolo-env
+source ~/yolo-env/bin/activate
+python -m pip install --upgrade pip
+python -m pip install torch torchvision --index-url https://download.pytorch.org/whl/cu130
+python -m pip install ultralytics
+
+
+python -c "import torch; print('PyTorch:', torch.__version__); print('CUDA:', torch.cuda.is_available())"
+
+
+yolo predict model=yolo11n.pt source=0 device=0 imgsz=640 show=True
+
