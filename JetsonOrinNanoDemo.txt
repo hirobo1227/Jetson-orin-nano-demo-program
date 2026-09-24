@@ -37,3 +37,11 @@ python -c "import torch; print('PyTorch:', torch.__version__); print('CUDA:', to
 
 yolo predict model=yolo11n.pt source=0 device=0 imgsz=640 show=True
 
+
+source ~/yolo-env/bin/activate
+python -m pip install "numpy==1.26.4" "opencv-python==4.11.0.86"
+python -m pip check
+
+
+
+
